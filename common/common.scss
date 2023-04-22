@@ -52,6 +52,7 @@ $max-width: 600px;
     flex: 1 1 auto;
     margin: 0;
     padding: 0;
+    border-radius: 50px;
     .searching {
       // spinner
       top: 0.4em;
@@ -60,7 +61,7 @@ $max-width: 600px;
   }
 
   h1 {
-    font-size: var(--font-up-6);
+    font-size: 90px;
     line-height: $line-height-medium;
     @include breakpoint(tablet) {
       font-size: var(--font-up-4);
