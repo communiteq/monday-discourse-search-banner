@@ -80,7 +80,6 @@ $max-width: 600px;
     position: absolute;
     z-index: 2;
     order: 2;
-    right: 0;
     background: transparent;
     .d-icon {
       margin: 0;
@@ -89,7 +88,7 @@ $max-width: 600px;
       &:hover {
         background: transparent;
         .d-icon {
-          color: var(--primary-high);
+          color: #6161FF;
         }
       }
     }
