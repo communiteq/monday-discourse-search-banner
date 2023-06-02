@@ -23,7 +23,6 @@ $max-width: 600px;
   box-sizing: border-box;
   position: relative;
   padding: 2.5em 0 3em;
-  margin: 1em auto;
   @include breakpoint(tablet) {
     padding: 1em 8px 1.25em;
     margin-top: 0.5em;
