@@ -1,0 +1,20 @@
+.search-banner {
+    background-image: var(--custom-bg);
+  
+    @if $tile-background_image == "true" {
+      background-size: auto;
+    } @else {
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+  }
+  
+  /* fix font for search banner */
+.custom-search-banner h1 {
+  font-family: "Poppins",sans-serif;
+  font-size: 72px;
+}
+.custom-search-banner p {
+  font-family: "Poppins",sans-serif;
+  font-size: 20px;
+}
