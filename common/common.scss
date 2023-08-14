@@ -97,17 +97,37 @@ $max-width: 600px;
     margin-left: auto;
     margin-right: auto;
     left: 0;
-    top: 2.4em;
+    top: 56px;
     right: 0;
-    padding: 0.5em;
+    padding: 2px;
+    width: calc(100% - 50px);
     @include breakpoint(mobile-extra-large) {
-      width: 100%;
+      width: calc(100% - 50px);
     }
     ul,
     ol {
       list-style-type: none;
       margin: 0;
     }
+    .item {
+      .discourse-tags {
+        display: none;
+      }
+    }
+    .search-link .topic-title {
+      color: #323338;
+      .search-highlight {
+        color: #5559df;
+        font-weight: normal;
+      }
+    }
+
+  }
+  .search-menu .search-result-topic .search-link {
+    padding: 18px 0px 18px 12px;
+  }
+  .search-menu .search-link:focus, .search-menu .search-link:hover {
+    background-color: #f6f7fb;
   }
 
   .searching a.show-advanced-search {
@@ -125,3 +145,43 @@ $max-width: 600px;
 
 // these are add-on styles controlled by settings
 @import "special-styles";
+
+/* Fix alignment of X in search field */
+
+.search-menu .searching a.clear-search {
+  margin-right: -10px;
+  margin-top: 10px;
+}
+
+/* Fix weird color when focus */
+
+.search-menu .search-input:focus-within {
+  border-color: #6161FF;
+  outline: 1px solid #6161FF;
+  outline-offset: 0;
+}
+
+/* Fix padding, and placeholder color */
+
+.search-menu {
+  input[type="text"] {
+      color: #000;
+      padding: 1em 1em 1em 3em;
+  }
+  input[type="text"]::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: #6161FF;;
+      opacity: 1; /* Firefox */
+  }
+
+  input[type="text"]:-ms-input-placeholder { /* Internet Explorer 10-11 */
+      color: #6161FF;;
+  }
+
+  input[type="text"]::-ms-input-placeholder { /* Microsoft Edge */
+      color: #6161FF;;
+  }
+}
+
+.custom-search-banner-wrap > p {
+  font-size: 20px;
+}
