@@ -190,3 +190,9 @@ $max-width: 600px;
 .custom-search-banner-wrap > p {
   font-size: 20px;
 }
+
+/* fix for border-radius override in core */
+
+.search-menu .search-input input#search-term {
+  border-radius: 50px;
+}
