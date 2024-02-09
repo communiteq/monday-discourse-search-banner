@@ -8,6 +8,22 @@ $max-width: 600px;
   }
 }
 
+.search-banner {
+  background-image: var(--custom-bg);
+
+  @if $tile-background_image == "true" {
+    background-size: auto;
+  } @else {
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
+
+// hide search icon from default search menu
+.search-menu.glimmer-search-menu .search-icon {
+  display: none;
+}
+
 .custom-search-banner-wrap {
   box-sizing: border-box;
   position: relative;
@@ -23,18 +39,28 @@ $max-width: 600px;
   }
 
   .search-menu {
-    position: relative;
     display: flex;
-    flex-wrap: wrap;
-    .browser-search-tip {
-      display: none;
-    }
-    input[type="text"] {
-      margin: 0;
+
+    .search-menu-container {
       width: 100%;
-      padding-right: 4em;
       border-radius: 50px;
     }
+  }
+
+  .menu-panel-results .menu-panel {
+    position: unset;
+    padding: 0;
+  }
+
+  .d-icon-search {
+    margin: 0;
+  }
+  .browser-search-tip {
+    display: none;
+  }
+  .search-input input#search-term[type="text"] {
+    margin: 0;
+    width: 100%;
   }
 
   .search-input {
@@ -69,8 +95,7 @@ $max-width: 600px;
     margin-bottom: 26px;
   }
 
-  .search-icon {
-    position: absolute;
+  .btn.search-icon:not(.has-search-button-text) {
     z-index: 2;
     order: 2;
     background: transparent;
@@ -79,18 +104,41 @@ $max-width: 600px;
       color: #6161FF;
       padding: 0.7em;
     }
+    background: transparent;
+    line-height: 1;
+    color: var(--primary-medium);
+    height: 100%;
+    padding-right: 0.25em;
     .discourse-no-touch & {
       &:hover {
         background: transparent;
+        color: var(--primary);
         .d-icon {
           color: #6161FF;
         }
       }
     }
   }
+  .btn.search-icon.has-search-button-text {
+    order: 2;
+    margin-left: 0.5em;
+    column-gap: 0.5em;
+    background-color: var(--tertiary);
+    color: var(--secondary);
+    flex: none;
+    &:hover {
+      background-color: var(--tertiary-hover);
+    }
+    .d-icon {
+      color: var(--secondary);
+    }
+  }
 
-  .search-input .btn.search-context {
-    margin: 0;
+  // hide the search icon when a search context is selected
+  // eg when searching in a topic
+  .search-input .search-context + .search-icon:not(.has-search-button-text),
+  .search-input .search-context ~ .search-icon:not(.has-search-button-text) {
+    display: none;
   }
 
   .results {
@@ -133,6 +181,9 @@ $max-width: 600px;
   }
   .search-menu .search-link:focus, .search-menu .search-link:hover {
     background-color: #f6f7fb;
+    .d-icon-search {
+      display: none;
+    }
   }
 
   .searching a.show-advanced-search {
@@ -155,7 +206,6 @@ $max-width: 600px;
 
 .search-menu .searching a.clear-search {
   margin-right: -10px;
-  margin-top: 10px;
 }
 
 /* Fix weird color when focus */
